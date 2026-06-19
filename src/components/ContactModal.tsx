@@ -121,24 +121,27 @@ export function ContactModal({ children }: ContactModalProps) {
             <X className="h-5 w-5" />
           </Dialog.Close>
 
-          <Dialog.Title className="font-serif text-2xl font-semibold text-primary">
-            Schedule a Consultation
-          </Dialog.Title>
-          <Dialog.Description className="mt-2 text-sm text-muted-foreground">
-            Fill out the form below and we will get back to you as soon as possible.
-          </Dialog.Description>
-
           {status === 'success' ?
-            <div className="mt-8 border border-border bg-[#fafafa] p-6 text-center">
-              <p className="font-medium text-primary">Thank you for reaching out!</p>
-              <p className="mt-2 text-sm text-muted-foreground">
+            <>
+              <Dialog.Title className="text-primary text-center font-serif text-2xl font-semibold">
+                Thank you for reaching out!
+              </Dialog.Title>
+              <Dialog.Description className="text-muted-foreground mt-2 text-center text-sm">
                 We received your message and will get back to you shortly.
-              </p>
-              <Button onClick={() => handleOpenChange(false)} className="mt-6">
-                Close
-              </Button>
-            </div>
-          : <form onSubmit={handleSubmit} className="mt-8 space-y-5">
+              </Dialog.Description>
+              <div className="mt-8 text-center">
+                <Button onClick={() => handleOpenChange(false)}>Close</Button>
+              </div>
+            </>
+          : <>
+              <Dialog.Title className="text-primary font-serif text-2xl font-semibold">
+                Schedule a Consultation
+              </Dialog.Title>
+              <Dialog.Description className="text-muted-foreground mt-2 text-sm">
+                Fill out the form below and we will get back to you as soon as possible.
+              </Dialog.Description>
+
+              <form onSubmit={handleSubmit} className="mt-8 space-y-5">
               <div>
                 <label
                   htmlFor="fullName"
@@ -245,6 +248,7 @@ export function ContactModal({ children }: ContactModalProps) {
                 {status === 'sending' ? 'Sending...' : 'Send Message'}
               </Button>
             </form>
+            </>
           }
         </Dialog.Content>
       </Dialog.Portal>
