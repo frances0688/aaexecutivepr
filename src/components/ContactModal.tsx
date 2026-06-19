@@ -27,6 +27,11 @@ const initialFormData: FormData = {
   message: '',
 }
 
+function optionalField(value: string) {
+  const trimmed = value.trim()
+  return trimmed || 'Not provided'
+}
+
 type ContactModalProps = {
   children: ReactNode
 }
@@ -74,8 +79,8 @@ export function ContactModal({ children }: ContactModalProps) {
         {
           from_name: formData.fullName,
           reply_to: formData.email,
-          phone: formData.phone,
-          company: formData.company,
+          phone: optionalField(formData.phone),
+          company: optionalField(formData.company),
           message: formData.message,
         },
         publicKey,
