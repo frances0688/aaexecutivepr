@@ -72,7 +72,7 @@ export function SheetContent({
       <Dialog.Overlay className="fixed inset-0 z-50 bg-black/40 data-[state=open]:animate-in data-[state=closed]:animate-out" />
       <Dialog.Content
         className={cn(
-          'sheet-content fixed top-0 z-50 flex h-full w-[300px] flex-col bg-white pt-20 shadow-xl',
+          'sheet-content fixed top-0 z-50 flex h-full w-[300px] flex-col bg-white px-6 pt-20 shadow-xl',
           side === 'right' ? 'right-0' : 'left-0',
           className,
         )}
